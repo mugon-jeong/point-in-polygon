@@ -1,0 +1,16 @@
+spring.application.name=backend
+
+---
+spring:
+  datasource:
+    url: jdbc:postgresql://172.30.0.55:5432/polygon
+    username: conny
+    password: conny123!@
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true

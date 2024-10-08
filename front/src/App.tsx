@@ -51,6 +51,7 @@ function App() {
   const completePolygon = () => {
     if (path.length > 2) {
       setCompletedPolygons([...completedPolygons, path]);
+      console.log('Completed polygons:', [...completedPolygons, path]);
       setPath([]);
     } else {
       alert('폴리곤을 완성하려면 최소 세 개의 점이 필요합니다.');

@@ -1,0 +1,12 @@
+services:
+  postgis:
+    image: postgis/postgis:latest
+    container_name: postgis_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: conny
+      POSTGRES_PASSWORD: conny123!@
+      POSTGRES_DB: polygon
+    volumes:
+      - ./data/postgis:/var/lib/postgresql/data
