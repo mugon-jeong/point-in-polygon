@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 15s  # 15초마다 메트릭 수집
+
+scrape_configs:
+  - job_name: "postgis-server"
+    metrics_path: '/actuator/prometheus' # 메트릭을 가져올 엔드포인트
+    static_configs:
+      - targets: ["172.30.1.114:8780"] # 메트릭을 가져올 호스트, 기본 http scheme을 따른다

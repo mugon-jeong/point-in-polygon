@@ -31,7 +31,7 @@ class TerritoryController(
         @RequestParam lat: Double,
         @RequestParam long: Double
     ): Boolean {
-        return territoryService.isPointWithinTerritory(id, lat, long)
+        return territoryService.isPointWithinTerritoryByDb(id, lat, long)
     }
 
     @GetMapping("/{id}")

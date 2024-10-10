@@ -1,6 +1,6 @@
 
-###
-POST http://localhost:8080/territories
+### 폴리곤 생성
+POST http://172.30.1.114:8780/territories
 Content-Type: application/json
 
 {
@@ -19,3 +19,15 @@ Content-Type: application/json
     [127.75410902052126, 34.86230891834978]
   ]
 }
+
+### 폴리곤 영역 내부 판별 - 서버에서 처리(성공)
+GET http://172.30.1.114:8780/territories/1/within?long=127.757850&lat=34.863073
+
+### 폴리곤 영역 내부 판별 - db에서 처리(성공)
+GET http://localhost:8080/territories/1/st-within?long=127.757850&lat=34.863073
+
+### 폴리곤 영역 내부 판별 - 서버에서 처리(실패)
+GET http://localhost:8080/territories/1/within?long=127.757315&lat=34.861329
+
+### 폴리곤 영역 내부 판별 - db에서 처리(실패)
+GET http://localhost:8080/territories/1/st-within?long=127.757315&lat=34.861329

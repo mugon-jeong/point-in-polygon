@@ -10,3 +10,28 @@ services:
       POSTGRES_DB: polygon
     volumes:
       - ./data/postgis:/var/lib/postgresql/data
+  postgis-server:
+    image: registry.musma.net/dandi/territory-service:latest
+    container_name: postgis-server
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgis_container:5432/polygon
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # Prometheus 설정 파일
+    ports:
+      - "9090:9090"
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    ports:
+      - "8081:8080"  # cAdvisor 포트

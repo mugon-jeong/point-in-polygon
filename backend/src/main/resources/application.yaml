@@ -1,6 +1,13 @@
 spring.application.name=backend
 
 ---
+management:
+  endpoints:
+    prometheus: # 활성화를 원하는 엔드포인트의 id
+      enabled: true
+    web:
+      exposure:
+        include: prometheus # 공개를 원하는 엔드포인트의 id들
 spring:
   datasource:
     url: jdbc:postgresql://172.30.0.55:5432/polygon
